@@ -1,29 +1,70 @@
-# Welcome to your Lovable project
+# Oromia Agriculture Gateway
 
-This project was built with [Lovable](https://lovable.dev).
+The official web gateway for the Oromia Agriculture Bureau — connecting farming
+households across Oromia's zones and woredas with services, programs, and
+information from the Bureau.
 
-## Build with Lovable
-
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+Originally built with [Lovable](https://lovable.dev), now maintained directly
+in this repository.
 
 ## Built with
 
-- TanStack Start
+- [TanStack Start](https://tanstack.com/start)
 - TypeScript
 - React
 - Tailwind CSS
+- [Supabase](https://supabase.com) (auth & data)
+
+## Development
+
+You'll need [Bun](https://bun.sh) installed.
+
+```sh
+git clone https://github.com/mhret-e/oromia-agriculture-gateway.git
+cd oromia-agriculture-gateway
+bun install
+bun run dev
+```
+
+The app will be available at `http://localhost:3000` (or the port shown in
+your terminal).
+
+### Environment variables
+
+Copy `.env.example` to `.env` and fill in your Supabase project values:
+
+```
+SUPABASE_PROJECT_ID=
+SUPABASE_PUBLISHABLE_KEY=
+SUPABASE_URL=
+VITE_SUPABASE_PROJECT_ID=
+VITE_SUPABASE_PUBLISHABLE_KEY=
+VITE_SUPABASE_URL=
+```
+
+## Deployment
+
+This project deploys automatically to [Vercel](https://vercel.com) on every
+push to `main`. Vercel detects the TanStack Start framework and builds the
+project with no additional configuration required — just make sure the
+environment variables above are also set in the Vercel project settings.
+
+## Project structure
+
+```
+public/            static assets (favicon, robots.txt)
+src/
+  assets/          images and media
+  components/      shared UI components
+  hooks/           React hooks
+  integrations/
+    supabase/       Supabase client, auth, and types
+  lib/             utilities and shared content
+  routes/          file-based TanStack Router routes
+  router.tsx
+  server.ts
+  start.ts
+  styles.css
+supabase/
+  migrations/      database schema migrations
+```
